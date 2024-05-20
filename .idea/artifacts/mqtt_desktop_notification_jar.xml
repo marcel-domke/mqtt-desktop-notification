@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mqtt-desktop-notification:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/mqtt_desktop_notification_jar</output-path>
+    <root id="archive" name="mqtt-desktop-notification.jar">
+      <element id="module-output" name="mqtt-desktop-notification" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/org.eclipse.paho.client.mqttv3-1.2.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/gson-2.11.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
