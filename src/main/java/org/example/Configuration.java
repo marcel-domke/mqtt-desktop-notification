@@ -73,7 +73,7 @@ public class Configuration {
             case "version":
                 return "1.0";
             case "githubUrl":
-                return "https://github.com/marcel-domke";
+                return "https://github.com/marcel-domke/mqtt-desktop-notification";
             case "copyright":
                 return "Copyright 2024 Marcel Domke";
             default:
