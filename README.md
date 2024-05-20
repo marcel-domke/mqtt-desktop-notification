@@ -1,13 +1,13 @@
 # MQTT Desktop Notification
 
-MQTT Desktop Notification is a lightweight Windows desktop application written in Java that receives messages from an MQTT broker and displays them as desktop notifications. The tool is ideal for displaying desktop notifications from platforms like Node-RED, Home Assistant, or any other system that utilizes MQTT.
+MQTT Desktop Notification is a lightweight Windows desktop application written in Java that can be used to send notifications to the Windows desktop via MQTT. The tool is ideal for displaying notifications from platforms like Node-RED, Home Assistant, or any other system that utilizes MQTT.
 
 ## Features
 
-- **Real-time Notifications**: Receive and display desktop notifications for messages from a MQTT topic.
+- **Real-time Notifications**: Receive and display desktop notifications sent via an MQTT message.
 - **Icon Integration**: 
   - Allows users to represent the status of their smart home systems using a tray icon.
-  - Users can pass an icon name through MQTT to dynamically update the tray icon and reflect the system status.
+  - Users can update the tray icon dynamically via an MQTT message.
 - **Customizable**: Easily configure MQTT broker settings, topics, and notification preferences via a `settings.json` file.
 - **Windows Only**: Specifically designed for Windows OS.
 - **Lightweight**: Minimal system resource usage, designed to run in the background.
@@ -28,7 +28,7 @@ MQTT Desktop Notification is a lightweight Windows desktop application written i
     ```bash
     java -jar mqtt-desktop-notification.jar
     ```
-    - **Initial Configuration**: Upon the first launch, the application will autonomously generate the `settings.json` file in its directory before closing.
+    - **Initial Configuration**: Upon the first launch, the application will automatically generate the `settings.json` file in its directory before closing.
 
 4. **Edit Configuration**: Customize settings by opening the `settings.json` file in a text editor. Ensure the `run` value is set to `true`.
 
