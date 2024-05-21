@@ -40,8 +40,11 @@ MQTT Desktop Notification is a lightweight Windows desktop application written i
 
 To enable the application to run automatically at startup:
 
-1. Move the `mqtt-desktop-notification.jar` file and the `settings.json` file into the Windows startup folder. You can access this folder by pressing `Win + R`, typing `shell:startup`, and pressing `Enter`.
-2. The application will now run automatically every time you start your computer.
+1. **Copy the JAR file**: Right-click on the `mqtt-desktop-notification.jar` file and select "Copy".
+
+2. **Insert Link**: Navigate to the Windows startup folder by pressing `Win + R`, typing `shell:startup`, and pressing `Enter`. Once in the startup folder, right-click and select "Paste Shortcut" to insert a link to the `mqtt-desktop-notification.jar` file.
+
+3. The application will now run automatically every time you start your computer.
 
 ## Configuration
 
@@ -82,8 +85,8 @@ Upon first startup, a `settings.json` file is automatically created in the appli
     ```json
     {
       "flag": "info",
-      "topic": "Message Header",
-      "message": "Message Body"
+      "topic": "Title",
+      "message": "Message"
     }
     ```
 
@@ -107,7 +110,164 @@ Upon first startup, a `settings.json` file is automatically created in the appli
 4. **Receive Confirmation**: Once the message is sent, the tray icon will change to the selected icon, providing visual feedback to the user.
 
 
+## Example
 
+![Notification Example](screenshot.png)
+
+### Node-RED Flow
+
+<details>
+<summary>Click to display the Node-Red flow</summary>
+
+```json
+
+[
+{
+"id": "7844d8f9af265613",
+"type": "inject",
+"z": "72a5755d1a09f75e",
+"name": "",
+"props": [
+{
+"p": "payload"
+}
+],
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"topic": "",
+"payload": "{\"flag\":\"info\",\"topic\":\"Title\",\"message\":\"Message\"}",
+"payloadType": "json",
+"x": 150,
+"y": 160,
+"wires": [
+[
+"2a204a526163c784"
+]
+]
+},
+{
+"id": "2a204a526163c784",
+"type": "mqtt out",
+"z": "72a5755d1a09f75e",
+"name": "",
+"topic": "notification/json",
+"qos": "2",
+"retain": "false",
+"respTopic": "",
+"contentType": "",
+"userProps": "",
+"correl": "",
+"expiry": "",
+"broker": "",
+"x": 440,
+"y": 160,
+"wires": []
+},
+{
+"id": "d65e8bbf4616a272",
+"type": "mqtt out",
+"z": "72a5755d1a09f75e",
+"name": "",
+"topic": "notification/icon",
+"qos": "2",
+"retain": "false",
+"respTopic": "",
+"contentType": "",
+"userProps": "",
+"correl": "",
+"expiry": "",
+"broker": "",
+"x": 440,
+"y": 280,
+"wires": []
+},
+{
+"id": "b93cb4703ceffb06",
+"type": "inject",
+"z": "72a5755d1a09f75e",
+"name": "",
+"props": [
+{
+"p": "payload"
+}
+],
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"topic": "",
+"payload": "circle-green",
+"payloadType": "str",
+"x": 170,
+"y": 280,
+"wires": [
+[
+"d65e8bbf4616a272"
+]
+]
+},
+{
+"id": "3ebeb5e8cf65a91e",
+"type": "inject",
+"z": "72a5755d1a09f75e",
+"name": "",
+"props": [
+{
+"p": "payload"
+}
+],
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"topic": "",
+"payload": "circle-red",
+"payloadType": "str",
+"x": 160,
+"y": 320,
+"wires": [
+[
+"d65e8bbf4616a272"
+]
+]
+},
+{
+"id": "384e3690f53064ec",
+"type": "comment",
+"z": "72a5755d1a09f75e",
+"name": "Send notification",
+"info": "",
+"x": 180,
+"y": 120,
+"wires": []
+},
+{
+"id": "5de93b05d4e750c5",
+"type": "comment",
+"z": "72a5755d1a09f75e",
+"name": "Change icon",
+"info": "",
+"x": 170,
+"y": 240,
+"wires": []
+},
+{
+"id": "f7323a730795d4de",
+"type": "comment",
+"z": "72a5755d1a09f75e",
+"name": "https://github.com/marcel-domke/mqtt-desktop-notification",
+"info": "",
+"x": 310,
+"y": 60,
+"wires": []
+}
+]
+
+```
+
+</details>
 
 ## Development
 
